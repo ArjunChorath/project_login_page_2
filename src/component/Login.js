@@ -1,47 +1,50 @@
-import {
-  Box,
-  Button,
-  Grid,
-  Paper,
-  TextField,
-} from "@mui/material";
+import { Box, Button, Grid, Paper, TextField } from "@mui/material";
 import React, { useState } from "react";
 import axios from "axios";
-
+import { isDisabled } from "@testing-library/user-event/dist/utils";
 
 export const Login = () => {
-    const [userName,setUserName]=useState('');
-    const [password, setPassword] = useState('');
-    const [message,setMessage]=useState('')
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [isUsernameFocused, setIsUsernameFocused] = useState(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
 
-    const handleSubmit=async(e)=>{
+  const handleUsernameChange = (event) => {
+    setUserName(event.target.value);
+    setIsButtonDisabled(!event.target.value || !password);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+    setIsButtonDisabled(!userName || !event.target.value);
+  };
+
+  const handleUserNameFocus = () => {
+    setIsUsernameFocused(true);
+    setIsPasswordFocused(false)
+  };
+
+  const handlePasswordFocus=()=>{
+    setIsPasswordFocused(true)
+    setIsUsernameFocused(false)
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+  };
 
-    
-
-    }
-
-    const handleLogin=()=>{
-        if(!userName || !password)
-        {
-            setMessage('enter your credentials')
-            
-        }
-        else{
-
-            setMessage('login successfull')
-        }
-    setUserName('')
-    setPassword('')
-
-    }
+  const handleLogin = () => {};
 
   const paperStyle = {
-    borderRadius:'7px',
+    borderRadius: "7px",
     padding: "35px",
     height: "330px",
     width: "330px",
     alignitems: "center",
+    display: "flex",
+    justifyContent: "center",
+    flexDirection:"column",
     margin: "auto auto",
     backgroundColor: "#071835",
   };
@@ -53,12 +56,17 @@ export const Login = () => {
       width="100vw"
       sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
     >
-      <Grid>
-        <Paper elevation={0} style={paperStyle}>
+      <Grid
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <Paper style={paperStyle}>
           <Grid
-            align="center"
             sx={{
-              height: "7.5rem",
+              height: "5rem",
               width: "20rem",
               display: "flex",
               alignItems: "center",
@@ -72,73 +80,92 @@ export const Login = () => {
                 fontWeight: "500",
                 fontSize: "29px",
                 lineHeight: "2.0",
-               
               }}
             >
               Login
             </h2>
           </Grid>
 
-           <Box >
+          <Box
+            sx={{
+              height: "25vh",
+              width: "22vw",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <Grid align="center">
               <form onSubmit={handleSubmit}>
                 <TextField
-                  onChange={(e) => setUserName(e.target.value)}
-                  variant="outlined"
+                  onChange={handleUsernameChange}
+                  onFocus={handleUserNameFocus}
                   type="text"
                   value={userName}
                   inputProps={{
-                    style: { background: "white", borderRadius: "10px",color:"#000000" },
-                     placeholder:"username"
+                    placeholder: "username",
+                    style: {
+                      background: "white",
+                      height: "4px",
+                      borderRadius: "5px",
+                      color: "black",
+                      width: "20vw",
+                    },
                   }}
                   InputLabelProps={{
                     style: { color: "white" },
                   }}
-                 
-                  size="small"
-                  fullWidth
-                  required
+                  sx={{ height: "40px" }}
                 ></TextField>
+                {isUsernameFocused && (
+                  <p style={{ color: "red" }}>Enter your username</p>
+                )}
                 <br />
                 <br />
                 <TextField
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={handlePasswordChange}
+                  onFocus={handlePasswordFocus}
                   variant="outlined"
                   inputProps={{
-                    style: { background: "white", borderRadius: "10px" },
+                    placeholder: "Password",
+                    style: {
+                      background: "white",
+                      height: "4px",
+                      borderRadius: "5px",
+                      color: "black",
+                      width: "20vw",
+                    },
                   }}
                   InputLabelProps={{
                     style: { color: "white" },
                   }}
-                  placeholder="Password"
                   type="password"
                   value={password}
-                  size="small"
-                  fullWidth
-                  required
                 ></TextField>
+                {isPasswordFocused && (
+                  <p style={{ color: "red" }}>Enter your password</p>
+                )}
                 <br />
                 <br />
-                <Button
+                <button
                   onClick={handleLogin}
+                  disabled={isButtonDisabled}
                   variant="contained"
                   margin="25px"
                   style={{
                     color: "black",
-                    background: "white",
+                    background: isButtonDisabled ? "#9292a4" : "white",
                     textTransform: "capitalize",
+                    width: "4rem",
+                    height: "3.3rem",
+                    fontSize: "10px",
+
+                    // bgcolor:"grey"
                   }}
                 >
                   Login
-                </Button>
+                </button>
               </form>
-              <p
-                style={{
-                  color: message.includes("successfull") ? "green" : "red",
-                }}
-              >
-                {message}
-              </p>
             </Grid>
           </Box>
         </Paper>
