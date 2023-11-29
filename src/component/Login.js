@@ -1,43 +1,51 @@
-import {
-  Box,
-  Button,
-  Grid,
-  Paper,
-  TextField,
-} from "@mui/material";
+import { Box, Button, Grid, Paper, TextField } from "@mui/material";
 import React, { useState } from "react";
 import axios from "axios";
 
-
 export const Login = () => {
-    const [userName,setUserName]=useState('');
-    const [password, setPassword] = useState('');
-    const [message,setMessage]=useState('')
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-    const handleSubmit=async(e)=>{
+  const parameters = new URLSearchParams();
+  parameters.append("username", username);
+  parameters.append("password", password);
+  parameters.append("grant_type", "password");
+  parameters.append("client_id", "dicom-authentication");
+  parameters.append("client_secret", "3vxuBRaMIz8FDly0vZi6tu5gWEtp9fqa");
+
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
-
+    try {
+      const response = await axios
+        .post(
+          "http://10.30.2.208:8080/realms/dicom-realm/protocol/openid-connect/token",
+          parameters
+        )
+        .then((data) => data)
+        .then((dataKey) => dataKey.data.access_token);
+        console.log(response);
+      return response;
+    } catch (error) {
+      console.error("error durinng login", error.response.data);
     }
+  };
 
-    const handleLogin=()=>{
-        if(!userName || !password)
-        {
-            setMessage('enter your credentials')
-            
-        }
-        else{
-
-            setMessage('login successfull')
-        }
-    setUserName('')
-    setPassword('')
-
+  const handleLogin = () => {
+    if (!username || !password) {
+      setMessage("enter your credentials");
+    } else {
+      setMessage("login successfull");
     }
+    setUserName("");
+    setPassword("");
+  };
 
   const paperStyle = {
-    borderRadius:'7px',
+    borderRadius: "7px",
     padding: "35px",
     height: "330px",
     width: "330px",
@@ -72,29 +80,31 @@ export const Login = () => {
                 fontWeight: "500",
                 fontSize: "29px",
                 lineHeight: "2.0",
-               
               }}
             >
               Login
             </h2>
           </Grid>
 
-           <Box >
+          <Box>
             <Grid align="center">
-              <form onSubmit={handleSubmit}>
+              <form>
                 <TextField
                   onChange={(e) => setUserName(e.target.value)}
                   variant="outlined"
                   type="text"
-                  value={userName}
+                  value={username}
                   inputProps={{
-                    style: { background: "white", borderRadius: "10px",color:"#000000" },
-                     placeholder:"username"
+                    style: {
+                      background: "white",
+                      borderRadius: "10px",
+                      color: "#000000",
+                    },
+                    placeholder: "username",
                   }}
                   InputLabelProps={{
                     style: { color: "white" },
                   }}
-                 
                   size="small"
                   fullWidth
                   required
@@ -120,8 +130,7 @@ export const Login = () => {
                 <br />
                 <br />
                 <Button
-                  onClick={handleLogin}
-                  variant="contained"
+                  onClick={handleSubmit}
                   margin="25px"
                   style={{
                     color: "black",
