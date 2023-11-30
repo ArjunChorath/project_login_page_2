@@ -14,8 +14,6 @@ export const Login = () => {
   parameters.append("client_id", "dicom-authentication");
   parameters.append("client_secret", "3vxuBRaMIz8FDly0vZi6tu5gWEtp9fqa");
 
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -27,7 +25,7 @@ export const Login = () => {
         )
         .then((data) => data)
         .then((dataKey) => dataKey.data.access_token);
-        console.log(response);
+      console.log(response);
       return response;
     } catch (error) {
       console.error("error durinng login", error.response.data);
