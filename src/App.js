@@ -1,11 +1,13 @@
+import { Box } from '@mui/material';
 import './App.css';
-import { Login } from './component/Login';
+// import { Login } from './component/Login';
+import { SearchBar } from './component/SearchBar';
 
 function App() {
   return (
-    <div >
-     <Login/>
-    </div>
+    <Box>
+      <SearchBar/>
+    </Box>
   );
 }
 

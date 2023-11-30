@@ -16,7 +16,12 @@ export const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+     if (!username ) {
+      setMessage("enter your username ");
+    } else if(!password){
+      setMessage('enter your password')
+    }
+   else{
     try {
       const response = await axios
         .post(
@@ -25,23 +30,14 @@ export const Login = () => {
         )
         .then((data) => data)
         .then((dataKey) => dataKey.data.access_token);
-      console.log(response);
-      return response;
+      console.log(response); 
+      return response; 
+      
     } catch (error) {
       console.error("error durinng login", error.response.data);
-    }
+       }
+    ;}
   };
-
-  const handleLogin = () => {
-    if (!username || !password) {
-      setMessage("enter your credentials");
-    } else {
-      setMessage("login successfull");
-    }
-    setUserName("");
-    setPassword("");
-  };
-
   const paperStyle = {
     borderRadius: "7px",
     padding: "35px",
@@ -88,7 +84,7 @@ export const Login = () => {
             <Grid align="center">
               <form>
                 <TextField
-                  onChange={(e) => setUserName(e.target.value)}
+                  onChange={(e) => setUserName(e.target.value.trim())}
                   variant="outlined"
                   type="text"
                   value={username}
@@ -110,7 +106,7 @@ export const Login = () => {
                 <br />
                 <br />
                 <TextField
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value.trim())}
                   variant="outlined"
                   inputProps={{
                     style: { background: "white", borderRadius: "10px" },
