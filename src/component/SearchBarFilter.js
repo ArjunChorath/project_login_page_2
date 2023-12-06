@@ -39,6 +39,8 @@ export const SearchBarFilter = () => {
                   height: "22px",
                   marginBottom: "10px",
                   borderRadius: "5px",
+                  borderColor:'indigo',
+                  outline:'none'
                 }}
               ></input>
             </Box>
