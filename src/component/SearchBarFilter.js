@@ -2,7 +2,25 @@ import { Box } from '@mui/material'
 import React, { useState } from 'react'
 
 export const SearchBarFilter = () => {
-    const [isClicked,setIsClicked]=useState(false);
+    const [isClickedPatient,setIsClickedPatient]=useState(false);
+    const [isClickedMRN, setIsClickedMRN] = useState(false);
+    const [isClickedStartStudyDate,setIsClickedStartStudyDate]=useState(false);
+    const [isClickedEndStudyDate, setIsClickedEndtStudyDate]=useState(false);
+    const [isClickedDescription, setIsClickedDescription] = useState(false);
+    const [isClickedModality, setIsClickedModality] = useState(false);
+    const [isClickedAccession, setIsClickedAccession] = useState(false);
+    const [selectedOptions,setSelectedOptions]=useState([]);
+
+    const options = [
+     'option1','option2','option3'
+    ];
+
+    const handleChange=(event)=>{
+      setSelectedOptions(event.target.value)
+
+    }
+   
+
   return (
     <Box>
       <Box
@@ -39,13 +57,12 @@ export const SearchBarFilter = () => {
                   width: "150px",
                   height: "22px",
                   marginBottom: "10px",
-                  outline:"none",
+                  outline: "none",
                   borderRadius: "5px",
-                  border:`1px solid ${isClicked ? "cyan":"indigo"}`
-               
+                  border: `1px solid ${isClickedPatient ? "cyan" : "indigo"}`,
                 }}
-                onFocus={() => setIsClicked(true)}
-                onBlur={()=>setIsClicked(false)}
+                onFocus={() => setIsClickedPatient(true)}
+                onBlur={() => setIsClickedPatient(false)}
               ></input>
             </Box>
           </Box>
@@ -63,11 +80,11 @@ export const SearchBarFilter = () => {
                   height: "22px",
                   marginBottom: "10px",
                   borderRadius: "5px",
-                  border:`1px solid ${isClicked ? "cyan":"indigo"}`
-               
+                  outline: "none",
+                  border: `1px solid ${isClickedMRN ? "cyan" : "indigo"}`,
                 }}
-                onFocus={() => setIsClicked(true)}
-                onBlur={()=>setIsClicked(false)}
+                onFocus={() => setIsClickedMRN(true)}
+                onBlur={() => setIsClickedMRN(false)}
               ></input>
             </Box>
           </Box>
@@ -85,7 +102,13 @@ export const SearchBarFilter = () => {
                   height: "22px",
                   marginBottom: "10px",
                   borderRadius: "5px",
+                  outline: "none",
+                  border: `1px solid ${
+                    isClickedStartStudyDate ? "cyan" : "indigo"
+                  }`,
                 }}
+                onFocus={() => setIsClickedStartStudyDate(true)}
+                onBlur={() => setIsClickedStartStudyDate(false)}
               ></input>
             </Box>
           </Box>
@@ -103,7 +126,13 @@ export const SearchBarFilter = () => {
                   height: "22px",
                   marginTop: "19px",
                   borderRadius: "5px",
+                  outline: "none",
+                  border: `1px solid ${
+                    isClickedEndStudyDate ? "cyan" : "indigo"
+                  }`,
                 }}
+                onFocus={() => setIsClickedEndtStudyDate(true)}
+                onBlur={() => setIsClickedEndtStudyDate(false)}
               ></input>
             </Box>
           </Box>
@@ -121,7 +150,13 @@ export const SearchBarFilter = () => {
                   height: "22px",
                   marginBottom: "10px",
                   borderRadius: "5px",
+                  outline: "none",
+                  border: `1px solid ${
+                    isClickedDescription ? "cyan" : "indigo"
+                  }`,
                 }}
+                onFocus={() => setIsClickedDescription(true)}
+                onBlur={() => setIsClickedDescription(false)}
               ></input>
             </Box>
           </Box>
@@ -129,7 +164,10 @@ export const SearchBarFilter = () => {
           <Box sx={{ position: "relative", left: "-6%", marginBottom: "10px" }}>
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               <Box sx={{ color: "white", marginBottom: "8px" }}>Modality</Box>
-              <input
+              <select
+              value={selectedOptions}
+              onChange={handleChange}
+              
                 style={{
                   backgroundColor: "black",
                   color: "white",
@@ -137,8 +175,19 @@ export const SearchBarFilter = () => {
                   height: "22px",
                   marginBottom: "10px",
                   borderRadius: "5px",
+                  outline: "none",
+                  border: `1px solid ${isClickedModality ? "cyan" : "indigo"}`,
                 }}
-              ></input>
+                onFocus={() => setIsClickedModality(true)}
+                onBlur={() => setIsClickedModality(false)}
+              >
+                <option value="" disabled></option>
+          {options.map((option, index) => (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          ))}
+              </select>
             </Box>
           </Box>
 
@@ -157,7 +206,13 @@ export const SearchBarFilter = () => {
                   height: "22px",
                   marginBottom: "10px",
                   borderRadius: "5px",
+                  outline: "none",
+                  border: `1px solid ${
+                    isClickedAccession ? "cyan" : "indigo"
+                  }`,
                 }}
+                onFocus={() => setIsClickedAccession(true)}
+                onBlur={() => setIsClickedAccession(false)}
               ></input>
             </Box>
           </Box>
