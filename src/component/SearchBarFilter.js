@@ -12,7 +12,21 @@ export const SearchBarFilter = () => {
     const [selectedOptions,setSelectedOptions]=useState([]);
 
     const options = [
-     'option1','option2','option3'
+      "option1",
+      "option2",
+      "option3",
+      "option3",
+      "option3",
+      "option3",
+      "option3",
+      "option3",
+      "option3",
+      "option3",
+      "option3",
+      "option3",
+      "option3",
+      "option3",
+      "option3",
     ];
 
     const handleChange=(event)=>{
@@ -175,6 +189,8 @@ export const SearchBarFilter = () => {
                   height: "22px",
                   marginBottom: "10px",
                   borderRadius: "5px",
+                 
+                  overflow:'auto',
                   outline: "none",
                   border: `1px solid ${isClickedModality ? "cyan" : "indigo"}`,
                 }}
