@@ -1,10 +1,11 @@
 import { Box } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 
 export const SearchBarFilter = () => {
+    const [isClicked,setIsClicked]=useState(false);
   return (
     <Box>
-       <Box
+      <Box
         sx={{
           width: "100vw",
           heigth: "100vh",
@@ -38,8 +39,13 @@ export const SearchBarFilter = () => {
                   width: "150px",
                   height: "22px",
                   marginBottom: "10px",
+                  outline:"none",
                   borderRadius: "5px",
+                  border:`1px solid ${isClicked ? "cyan":"indigo"}`
+               
                 }}
+                onFocus={() => setIsClicked(true)}
+                onBlur={()=>setIsClicked(false)}
               ></input>
             </Box>
           </Box>
@@ -57,7 +63,11 @@ export const SearchBarFilter = () => {
                   height: "22px",
                   marginBottom: "10px",
                   borderRadius: "5px",
+                  border:`1px solid ${isClicked ? "cyan":"indigo"}`
+               
                 }}
+                onFocus={() => setIsClicked(true)}
+                onBlur={()=>setIsClicked(false)}
               ></input>
             </Box>
           </Box>
@@ -151,8 +161,6 @@ export const SearchBarFilter = () => {
               ></input>
             </Box>
           </Box>
-
-       
         </Box>
       </Box>
     </Box>

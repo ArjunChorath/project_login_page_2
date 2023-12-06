@@ -7,7 +7,7 @@ import { SearchBarFilter } from './component/SearchBarFilter';
 function App() {
   return (
     <Box>
-      
+      {/* <SearchBar/> */}
       <SearchBarFilter/>
     </Box>
   );
