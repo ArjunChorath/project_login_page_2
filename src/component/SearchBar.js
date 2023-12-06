@@ -1,4 +1,4 @@
-import { Box, TextField } from "@mui/material";
+import { Box, Grid, TextField } from "@mui/material";
 import React from "react";
 
 export const SearchBar = () => {
@@ -7,7 +7,7 @@ export const SearchBar = () => {
       sx={{
         width: "100vw",
         heigth: "100vh",
-        bgcolor: "#041c4a",
+        bgcolor: "#090c29",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -16,9 +16,9 @@ export const SearchBar = () => {
     >
       <Box
         sx={{
-          width: "60vw",
+          width: "62vw",
           heigth: "4rem",
-          bgcolor: "#041c4a",
+          bgcolor: "#090c29",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -29,54 +29,60 @@ export const SearchBar = () => {
           sx={{
             width: "5vw",
             heigth: "10rem",
-            bgcolor: "#041c4a",
+            bgcolor: "#090c29",
             display: "flex",
             alignItems: "center",
-            fontSize: "30px",
+            fontSize: "35px",
+            color: "white",
+            whiteSpace: "nowrap",
+            paddingBottom: "50px",
+            paddingTop: "20px",
           }}
         >
-          Study list
+          Study List
         </Box>
         <Box
           sx={{
-            width: "5vw",
-            heigth: "4rem",
-            bgcolor: "#041c4a",
             display: "flex",
             alignItems: "center",
             flexDirection: "row",
           }}
         >
-          10 studies
+          <Box
+            sx={{
+              width: "2.5vw",
+              heigth: "10rem",
+              bgcolor: "#090c29",
+              display: "flex",
+              alignItems: "center",
+              fontSize: "35px",
+              color: "white",
+              whiteSpace: "nowrap",
+              paddingBottom: "50px",
+              paddingTop: "20px",
+            }}
+          >
+            10
+          </Box>
+          <Box
+            sx={{
+              width: "5vw",
+              heigth: "10rem",
+              bgcolor: "#090c29",
+              display: "flex",
+              alignItems: "center",
+              fontSize: "25px",
+              color: "grey",
+              whiteSpace: "nowrap",
+              paddingBottom: "50px",
+              paddingTop: "20px",
+            }}
+          >
+            Studies
+          </Box>
         </Box>
       </Box>
-      <Box
-        sx={{
-          width: "100vw",
-          heigth: "100vh",
-          bgcolor: "041c4a",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Box
-          sx={{
-            width: "60%",
-            heigth: "20%",
-            bgcolor: "#041c4a",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-around",
-          }}
-        >
-          <input></input>
-          <input></input>
-          <input></input>
-          <input></input>
-          <input></input>
-        </Box>
-      </Box>
+      
     </Box>
   );
-};
+}; 
