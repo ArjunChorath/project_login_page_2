@@ -6,6 +6,8 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
+import { KeyboardArrowUp } from "@mui/icons-material";
+import { KeyboardArrowDown } from "@mui/icons-material";
 
 const ITEM_HEIGHT = 50;
 const ITEM_PADDING_TOP = 8;
@@ -38,6 +40,17 @@ const names = [
 export const Modality = () => {
      const [isClickedModality, setIsClickedModality] = useState(false);
      const [modalityType, setModalityType] = useState([]);
+      const [upArrowFill, setUpArrowFill] = useState("blue");
+      const [downArrowFill, setDownArrowFill] = useState("blue");
+
+      const upClicked = () => {
+        setUpArrowFill("rgb(0,195,255)");
+        setDownArrowFill("#090939");
+      };
+      const downClicked = () => {
+        setUpArrowFill("#090939");
+        setDownArrowFill("rgb(0,195,255)");
+      };
      
       const handleChange = (event) => {
         const {
@@ -56,7 +69,33 @@ export const Modality = () => {
         }}
       >
         <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <Box sx={{ color: "white", marginBottom: "6px" }}>Modality</Box>
+          <Box sx={{ color: "white", marginBottom: "1px", height: "1px" }}>
+            Modality
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+          >
+            <KeyboardArrowUp
+              fontSize="xs"
+              onClick={upClicked}
+              sx={{ color: upArrowFill, paddingLeft: "12px" }}
+            ></KeyboardArrowUp>
+            <KeyboardArrowDown
+              fontSize="xs"
+              onClick={downClicked}
+              sx={{
+                mt: "-8px",
+                mb: "2px",
+                color: downArrowFill,
+                paddingLeft: "12px",
+              }}
+            ></KeyboardArrowDown>
+          </Box>
 
           <FormControl sx={{ m: 0, width: 130, height: "22px" }}>
             <InputLabel id="demo-multiple-checkbox-label"></InputLabel>

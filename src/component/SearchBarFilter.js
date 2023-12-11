@@ -3,28 +3,16 @@ import React, { useState } from "react";
 
 
 import { PatientName } from "./SearchComponents/PatientName";
-import { MRN } from "./SearchComponents/MRN.js";
-import { StudyDate } from "./StudyDate.js";
+import {Mrn} from "./SearchComponents/Mrn.js"
+import { StudyDate } from "./SearchComponents/StudyDate.js";
 import { Description } from './SearchComponents/Description.js'
 import { Modality } from "./SearchComponents/Modality.js";
 import { Accession } from "./SearchComponents/Accession.js";
 
 
-
-
-
-
 export const SearchBarFilter = () => {
  
-  
  
-  
- 
- 
- 
-
- 
-
   return (
     <Box>
       <Box
@@ -48,21 +36,12 @@ export const SearchBarFilter = () => {
           }}
         >
          <PatientName></PatientName>
-         <MRN></MRN>
+         <Mrn></Mrn>
         <StudyDate/>
         <Description/>
         <Modality/>
         <Accession/>
-
-         
-
-        
-
-         
-         
-
-        
-          <Box sx={{ display: "flex", flexDirection: "column" }}>
+ <Box sx={{ display: "flex", flexDirection: "column" }}>
             <Box sx={{ color: "white", marginBottom: "50px" }}>Instances</Box>
           </Box>
         </Box>

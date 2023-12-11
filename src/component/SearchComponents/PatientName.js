@@ -6,20 +6,19 @@ import { KeyboardArrowDown } from "@mui/icons-material";
 
 export const PatientName = () => {
      const [isClickedPatient, setIsClickedPatient] = useState(false);
-     const [arrowUpColor, setArrowUpColor] = useState('blue');
-       const [arrowDownColor, setArrowDownColor] = useState('blue');
+     const [upArrowFill,setUpArrowFill]=useState("blue")
+     const [downArrowFill, setDownArrowFill] = useState("blue");
 
- const handleArrowUpClickOfPatient = () => {
-   setArrowUpColor((prevColor) => (prevColor === "cyan" ? "#90c29" : "cyan"));
-   setArrowDownColor((prevColor) => (prevColor === "cyan" ? "cyan" : "#90c29"));
- };
+     const upClicked=()=>{
+         setUpArrowFill("rgb(0,195,255)");
+         setDownArrowFill("#090939");
 
- const handleArrowDownClickOfPatient = () => {
-   setArrowDownColor((prevColor) =>
-     prevColor === "#90c29" ? "cyan" : "#90c29"
-   );
-   setArrowUpColor("cyan");
- };
+     }
+     const downClicked=()=>{
+      setUpArrowFill("#090939");
+      setDownArrowFill("rgb(0,195,255)");
+     }
+    
   return (
     <div>
       <Box sx={{ position: "relative", left: "-38%", marginBottom: "10px" }}>
@@ -36,13 +35,14 @@ export const PatientName = () => {
             >
               <KeyboardArrowUp
                 fontSize="xs"
-                sx={{ color: arrowUpColor }}
-                onClick={handleArrowUpClickOfPatient}
+                onClick={upClicked}
+                sx={{color:upArrowFill}}
               ></KeyboardArrowUp>
               <KeyboardArrowDown
                 fontSize="xs"
-                sx={{ mt: "-8px", mb: "8px", color: arrowDownColor }}
-                onClick={handleArrowDownClickOfPatient}
+                onClick={downClicked}
+                sx={{ mt: "-8px", mb: "8px",color:downArrowFill}}
+               
               ></KeyboardArrowDown>
             </Box>
           </Box>
