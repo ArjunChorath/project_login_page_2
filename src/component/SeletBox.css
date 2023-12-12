@@ -1,0 +1,38 @@
+/* SelectBox.css */
+.custom-select-container {
+    position: relative;
+}
+
+.custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 120px;
+    /* Set your desired width */
+    height: 30px;
+    /* Set your desired height */
+    background-color: black;
+    color: white;
+    border: 2px solid aqua;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+    /* Remove default focus style */
+}
+
+.custom-select:hover {
+    cursor: pointer;
+}
+
+.custom-select:focus {
+    border: 2px solid aqua;
+}
+
+.arrow-icon{
+    position: absolute;
+    top:50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: red;
+    cursor: pointer;
+}
