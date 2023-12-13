@@ -1,39 +1,13 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import { Box } from "@mui/material";
+import downArrow from "../../images/arrow-down-3101 (2).png"
 
 const MyComponent = () => {
-  const options = [
-    { value: "1", label: "25" },
-    { value: "2", label: "50" },
-    { value: "3", label: "100" },
-  ];
+ 
+ 
 
-  const [selectedOption, setSelectedOption] = useState({value:'2',label:'50'});
-
-  const handleChange = (selectedOption) => {
-    setSelectedOption(selectedOption);
-  };
-  const customStyles = {
-    control: (provided, state) => ({
-      ...provided,
-      minHeight: "2px",
-      backgroundColor:"black",
-      border: state.isFocused ? "1px solid white" : "1px solid aqua",
-    }),
-    dropdownIndicator: (provided, state) => ({
-      ...provided,
-      padding: "5px",
-    }),
-
-    option: (provided, state) => ({
-      ...provided,
-      minHeight: "5px",
-      color: "white",
-      backgroundColor: state.isSelected ? "blue" : "black",
-    }),
-   
-  };
+ 
  
   return (
     <Box
@@ -51,8 +25,8 @@ const MyComponent = () => {
           height: "10vh",
           width: "65vw",
           display: "flex",
-          alignItems:"center",
-          justifyContent:"space-between",
+          alignItems: "center",
+          justifyContent: "space-between",
           backgroundColor: "black",
         }}
       >
@@ -64,13 +38,28 @@ const MyComponent = () => {
             justifyContent: "center",
           }}
         >
-          <Select
-            style={{ innerWidth: "5px" }}
-            options={options}
-            value={selectedOption}
-            onChange={handleChange}
-            styles={customStyles}
-          />
+          <Box className="custom-select-container">
+            <Box sx={{ position: "relative" }}>
+              <select className="custom-select">
+                <option hidden value="" disabled selected>
+                  Select...
+                </option>
+                <option value="option1">25</option>
+                <option value="option1">50</option>
+                <option value="option2">100</option>
+              </select>
+            </Box>
+            <Box
+              sx={{
+                position: "absolute",
+                top: ".4rem",
+                left: "6rem",
+              }}
+            >
+              <img src={downArrow} alt="error"></img>
+            </Box>
+          
+          </Box>
           <h5 style={{ margin: "8px", color: "rgb(248, 248, 248)" }}>
             Results per page
           </h5>

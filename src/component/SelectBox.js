@@ -1,5 +1,5 @@
 import React from "react";
-import Icondown from "../images/arrow-down-3101.png";
+
 import downArrow from "../images/arrow-down-3101 (2).png";
 
 import "./SeletBox.css";
@@ -7,6 +7,7 @@ import { Box } from "@mui/material";
 
 const SelectBox = () => {
   return (
+    
     <Box className="custom-select-container">
       <Box sx={{ position: "relative" }}>
         <select className="custom-select">
@@ -27,6 +28,12 @@ const SelectBox = () => {
       >
         <img src={downArrow} alt="error"></img>
       </Box>
+      <Box sx={{position:'absolute'}}>
+        <h5 style={{ margin: "8px", color: "rgb(248, 248, 248)" }}>
+          Results per page
+        </h5>
+      </Box>
+      
     </Box>
   );
 };
