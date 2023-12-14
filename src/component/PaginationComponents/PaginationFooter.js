@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import Select from "react-select";
+
 import { Box } from "@mui/material";
-import downArrow from "../../images/arrow-down-3101 (2).png"
+import downArrow from "../../images/arrow-down-3101 (2).png";
+import './SeletBox.css'
 
-const MyComponent = () => {
- 
- 
+const PaginationFooter = () => {
 
- 
- 
   return (
     <Box
       sx={{
@@ -120,4 +117,4 @@ const MyComponent = () => {
   );
 };
 
-export default MyComponent;
+export default PaginationFooter;

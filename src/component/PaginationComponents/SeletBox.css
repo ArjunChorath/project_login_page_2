@@ -1,4 +1,4 @@
-/* SelectBox.css */
+
 .custom-select-container {
     position: relative;
 }
@@ -8,16 +8,16 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     width: 120px;
-    /* Set your desired width */
+    
     height: 30px;
-    /* Set your desired height */
+   
     background-color: black;
     color: white;
     border: 2px solid aqua;
     border-radius: 5px;
     padding: 5px;
     outline: none;
-    /* Remove default focus style */
+   
 }
 
 .custom-select:hover {
